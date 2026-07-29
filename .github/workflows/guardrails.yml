@@ -1,0 +1,14 @@
+name: guardrails
+on: [push, pull_request]
+jobs:
+  guardrails:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Block large files (>25MB)
+        run: |
+          big=$(find . -type f -not -path './.git/*' -size +25M)
+          if [ -n "$big" ]; then echo "::error::Large files committed:"; echo "$big"; exit 1; fi
+      - name: Scan for private keys
+        run: |
+          if grep -rEl "BEGIN (RSA|OPENSSH|DSA|EC|PGP) PRIVATE KEY" . --exclude-dir=.git; then echo "::error::Private key detected"; exit 1; fi
