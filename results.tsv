@@ -7,3 +7,4 @@ c67ad2a	2.695369	26.9	discard	lower weight decay to 0.1
 2603270	1.620487	8.4	keep	pilot 2026-07-29 baseline on autoresearch/jul29-pilot
 c38a16b	1.566742	8.4	keep	halve total batch size to 2^15
 b67e26d	1.495913	6.9	keep	remove final logit cap
+aa4be04	1.461336	6.9	keep	extend warmdown ratio to 0.75
