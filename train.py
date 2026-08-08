@@ -214,7 +214,6 @@ class GPT(nn.Module):
         x = norm(x)
 
         logits = self.lm_head(x).astype(mx.float32)
-        logits = 15.0 * mx.tanh(logits / 15.0)
 
         if targets is None:
             return logits
@@ -369,7 +368,7 @@ HEAD_DIM = 128
 WINDOW_PATTERN = "SSSL"
 
 # v0.1: AdamW only. Muon port is future work.
-TOTAL_BATCH_SIZE = 2**16
+TOTAL_BATCH_SIZE = 2**15
 EMBEDDING_LR = 0.6
 UNEMBEDDING_LR = 0.004
 MATRIX_LR = 0.04
@@ -377,7 +376,7 @@ SCALAR_LR = 0.5
 WEIGHT_DECAY = 0.2
 ADAM_BETAS = (0.8, 0.95)
 WARMUP_RATIO = 0.0
-WARMDOWN_RATIO = 0.5
+WARMDOWN_RATIO = 0.75
 FINAL_LR_FRAC = 0.0
 
 # Model size
