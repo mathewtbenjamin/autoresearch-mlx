@@ -97,4 +97,4 @@ decides, and writes samples to `rigor_ledger.jsonl`.
 
 ## License
 
-MIT. See [LICENSE](LICENSE).
+MIT. See [license](../../now/atlas/node_modules/ms/license.md).
